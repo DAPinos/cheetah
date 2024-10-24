@@ -1,0 +1,69 @@
+body {
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    background-image: url('https://cdn.suwalls.com/wallpapers/animals/cheetah-family-31475-1920x1200.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1, h2 {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: #FFD700;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #FFCC00;
+    font-weight: 700;
+}
+
+p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #E5E5E5;
+}
+
+.section-card {
+    background-color: rgba(50, 50, 50, 0.85);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.section-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+footer {
+    color: #cccccc;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 50px;
+}
+
+.header-text {
+    color: #ffffff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
