@@ -5,34 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cheetahs</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.23/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-image: url('https://example.com/cheetah-background.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-100 p-6">
+<body class="bg-gray-900 text-white p-6">
     <header class="text-center mb-6">
-        <h1 class="text-4xl font-bold text-blue-800 mb-2">All About Cheetahs</h1>
-        <p class="text-lg text-gray-600">The world's fastest land animal</p>
+        <h1 class="text-6xl text-yellow-400 mb-4 font-extrabold drop-shadow-2xl">All About Cheetahs</h1>
+        <p class="text-2xl text-gray-100 drop-shadow-lg italic">The world's fastest land animal</p>
     </header>
 
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="p-4 border rounded-md shadow-md bg-white">
-            <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Habitat</h2>
-            <p>Cheetahs are commonly found in the African savannas where they roam freely and hunt in open landscapes.</p>
+    <button id="language-toggle" class="language-toggle">Cambiar idioma</button>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="p-8 border rounded-lg shadow-2xl bg-gray-800 bg-opacity-90 backdrop-blur-md transform transition duration-300 hover:scale-105 section-card">
+            <h2 class="text-4xl font-bold text-yellow-300 mb-4 drop-shadow-xl">Habitat</h2>
+            <p class="text-gray-100">Cheetahs are commonly found in the African savannas where they roam freely and hunt in open landscapes.</p>
         </div>
-        <div class="p-4 border rounded-md shadow-md bg-white">
-            <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Speed</h2>
-            <p>Cheetahs can run at speeds of up to 120 km/h, making them the fastest land animals, capable of short bursts of incredible acceleration.</p>
+        <div class="p-8 border rounded-lg shadow-2xl bg-gray-800 bg-opacity-90 backdrop-blur-md transform transition duration-300 hover:scale-105 section-card">
+            <h2 class="text-4xl font-bold text-yellow-300 mb-4 drop-shadow-xl">Speed</h2>
+            <p class="text-gray-100">Cheetahs can run at speeds of up to 120 km/h, making them the fastest land animals, capable of short bursts of incredible acceleration.</p>
         </div>
-        <div class="p-4 border rounded-md shadow-md bg-white">
-            <h2 class="text-2xl font-semibold text-yellow-700 mb-4">Diet</h2>
-            <p>They primarily hunt small to medium-sized ungulates, relying on their agility and speed to catch their prey.</p>
+        <div class="p-8 border rounded-lg shadow-2xl bg-gray-800 bg-opacity-90 backdrop-blur-md transform transition duration-300 hover:scale-105 section-card">
+            <h2 class="text-4xl font-bold text-yellow-300 mb-4 drop-shadow-xl">Diet</h2>
+            <p class="text-gray-100">They primarily hunt small to medium-sized ungulates, relying on their agility and speed to catch their prey.</p>
+        </div>
+        <div class="p-8 border rounded-lg shadow-2xl bg-gray-800 bg-opacity-90 backdrop-blur-md transform transition duration-300 hover:scale-105 section-card">
+            <h2 class="text-4xl font-bold text-yellow-300 mb-4 drop-shadow-xl">Behavior</h2>
+            <p class="text-gray-100">Cheetahs are solitary animals, although females tend to live with their cubs for up to two years. Males sometimes form small groups called coalitions.</p>
+        </div>
+        <div class="p-8 border rounded-lg shadow-2xl bg-gray-800 bg-opacity-90 backdrop-blur-md transform transition duration-300 hover:scale-105 section-card">
+            <h2 class="text-4xl font-bold text-yellow-300 mb-4 drop-shadow-xl">Reproduction</h2>
+            <p class="text-gray-100">Female cheetahs usually give birth to a litter of 3-5 cubs after a gestation period of about 3 months. Cubs are vulnerable to predators and rely on their mother's protection.</p>
+        </div>
+        <div class="p-8 border rounded-lg shadow-2xl bg-gray-800 bg-opacity-90 backdrop-blur-md transform transition duration-300 hover:scale-105 section-card">
+            <h2 class="text-4xl font-bold text-yellow-300 mb-4 drop-shadow-xl">Threats</h2>
+            <p class="text-gray-100">Cheetahs face threats from habitat loss, human-wildlife conflict, and illegal wildlife trade. Their population is declining, and they are classified as vulnerable.</p>
         </div>
     </section>
+
+    <footer class="text-center mt-16">
+        <p class="text-gray-200 text-lg">Learn more about how to protect these incredible animals and ensure their survival for generations to come.</p>
+    </footer>
+
+    <script>
+        document.getElementById('language-toggle').addEventListener('click', function() {
+            const elements = document.querySelectorAll('h1, h2, p');
+            elements.forEach(element => {
+                if (element.dataset.lang === 'es') {
+                    element.textContent = element.dataset.en;
+                    element.removeAttribute('data-lang');
+                } else {
+                    element.dataset.lang = 'es';
+                    element.dataset.en = element.textContent;
+                    if (element.tagName === 'H1') {
+                        element.textContent = 'Todo Sobre Los Guepardos';
+                    } else if (element.tagName === 'H2') {
+                        switch (element.textContent) {
+                            case 'Habitat':
+                                element.textContent = 'Hábitat';
+                                break;
+                            case 'Speed':
+                                element.textContent = 'Velocidad';
+                                break;
+                            case 'Diet':
+                                element.textContent = 'Dieta';
+                                break;
+                            case 'Behavior':
+                                element.textContent = 'Comportamiento';
+                                break;
+                            case 'Reproduction':
+                                element.textContent = 'Reproducción';
+                                break;
+                            case 'Threats':
+                                element.textContent = 'Amenazas';
+                                break;
+                        }
+                    } else {
+                        switch (element.textContent) {
+                            case "The world's fastest land animal":
+                                element.textContent = 'El animal terrestre más rápido del mundo';
+                                break;
+                            case 'Cheetahs are commonly found in the African savannas where they roam freely and hunt in open landscapes.':
+                                element.textContent = 'Los guepardos se encuentran comúnmente en las sabanas africanas, donde deambulan libremente y cazan en paisajes abiertos.';
+                                break;
+                            case 'Cheetahs can run at speeds of up to 120 km/h, making them the fastest land animals, capable of short bursts of incredible acceleration.':
+                                element.textContent = 'Los guepardos pueden correr a velocidades de hasta 120 km/h, lo que los convierte en los animales terrestres más rápidos, capaces de explosiones cortas de aceleración increíble.';
+                                break;
+                            case 'They primarily hunt small to medium-sized ungulates, relying on their agility and speed to catch their prey.':
+                                element.textContent = 'Principalmente cazan ungulados de tamaño pequeño a mediano, confiando en su agilidad y velocidad para atrapar a sus presas.';
+                                break;
+                            case 'Cheetahs are solitary animals, although females tend to live with their cubs for up to two years. Males sometimes form small groups called coalitions.':
+                                element.textContent = 'Los guepardos son animales solitarios, aunque las hembras tienden a vivir con sus cachorros hasta dos años. Los machos a veces forman pequeños grupos llamados coaliciones.';
+                                break;
+                            case 'Female cheetahs usually give birth to a litter of 3-5 cubs after a gestation period of about 3 months. Cubs are vulnerable to predators and rely on their mother\'s protection.':
+                                element.textContent = 'Las guepardas generalmente dan a luz a una camada de 3-5 cachorros después de un período de gestación de unos 3 meses. Los cachorros son vulnerables a los depredadores y dependen de la protección de su madre.';
+                                break;
+                            case 'Cheetahs face threats from habitat loss, human-wildlife conflict, and illegal wildlife trade. Their population is declining, and they are classified as vulnerable.':
+                                element.textContent = 'Los guepardos enfrentan amenazas como la pérdida de hábitat, el conflicto entre humanos y vida silvestre, y el comercio ilegal de animales. Su población está disminuyendo y se les clasifica como vulnerables.';
+                                break;
+                            case 'Learn more about how to protect these incredible animals and ensure their survival for generations to come.':
+                                element.textContent = 'Aprenda más sobre cómo proteger a estos increíbles animales y asegurar su supervivencia para las generaciones futuras.';
+                                break;
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
