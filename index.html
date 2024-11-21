@@ -6,14 +6,21 @@
     <title>Cheetahs</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.23/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="bg-gray-900 text-white p-6">
+    <button id="language-toggle" class="language-toggle absolute top-4 right-4 bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600">Español/English</button>
+    
     <header class="text-center mb-6">
         <h1 class="text-6xl text-yellow-400 mb-4 font-extrabold drop-shadow-2xl">All About Cheetahs</h1>
         <p class="text-2xl text-gray-100 drop-shadow-lg italic">The world's fastest land animal</p>
     </header>
 
-    <button id="language-toggle" class="language-toggle">Cambiar idioma</button>
+    <div class="name-form text-center mb-16">
+        <label for="user-input" class="block text-xl mb-2" data-en="Enter your name:" data-es="¿Cómo te llamarías si fueras una Cheetah?">What would you name yourself if you were a cheetah?</label>
+        <input type="text" id="user-input" class="p-2 rounded text-gray-900" placeholder="Your name">
+        <button id="submit-button" class="ml-4 p-2 bg-yellow-500 text-white rounded hover:bg-yellow-600" data-en="Submit" data-es="Enviar">Submit</button>
+    </div>
 
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div class="p-8 border rounded-lg shadow-2xl bg-gray-800 bg-opacity-90 backdrop-blur-md transform transition duration-300 hover:scale-105 section-card">
@@ -48,16 +55,21 @@
 
     <script>
         document.getElementById('language-toggle').addEventListener('click', function() {
-            const elements = document.querySelectorAll('h1, h2, p');
+            const elements = document.querySelectorAll('h1, h2, p, label, input, button');
             elements.forEach(element => {
                 if (element.dataset.lang === 'es') {
                     element.textContent = element.dataset.en;
                     element.removeAttribute('data-lang');
+                    if (element.tagName === 'INPUT') {
+                        element.placeholder = 'Your name';
+                    } else if (element.tagName === 'BUTTON' && element.id === 'submit-button') {
+                        element.textContent = 'Submit';
+                    }
                 } else {
                     element.dataset.lang = 'es';
                     element.dataset.en = element.textContent;
                     if (element.tagName === 'H1') {
-                        element.textContent = 'Todo Sobre Los Guepardos';
+                        element.textContent = 'Todo Sobre Los Cheetahs';
                     } else if (element.tagName === 'H2') {
                         switch (element.textContent) {
                             case 'Habitat':
@@ -79,28 +91,34 @@
                                 element.textContent = 'Amenazas';
                                 break;
                         }
+                    } else if (element.tagName === 'LABEL') {
+                        element.textContent = '¿Cómo te llamarías si fueras una Cheetah?';
+                    } else if (element.tagName === 'INPUT') {
+                        element.placeholder = 'Nombre';
+                    } else if (element.tagName === 'BUTTON' && element.id === 'submit-button') {
+                        element.textContent = 'Enviar';
                     } else {
                         switch (element.textContent) {
                             case "The world's fastest land animal":
                                 element.textContent = 'El animal terrestre más rápido del mundo';
                                 break;
                             case 'Cheetahs are commonly found in the African savannas where they roam freely and hunt in open landscapes.':
-                                element.textContent = 'Los guepardos se encuentran comúnmente en las sabanas africanas, donde deambulan libremente y cazan en paisajes abiertos.';
+                                element.textContent = 'Los Cheetahs se encuentran comúnmente en las sabanas africanas, donde deambulan libremente y cazan en paisajes abiertos.';
                                 break;
                             case 'Cheetahs can run at speeds of up to 120 km/h, making them the fastest land animals, capable of short bursts of incredible acceleration.':
-                                element.textContent = 'Los guepardos pueden correr a velocidades de hasta 120 km/h, lo que los convierte en los animales terrestres más rápidos, capaces de explosiones cortas de aceleración increíble.';
+                                element.textContent = 'Los Cheetahs pueden correr a velocidades de hasta 120 km/h, lo que los convierte en los animales terrestres más rápidos, capaces de explosiones cortas de aceleración increíble.';
                                 break;
                             case 'They primarily hunt small to medium-sized ungulates, relying on their agility and speed to catch their prey.':
                                 element.textContent = 'Principalmente cazan ungulados de tamaño pequeño a mediano, confiando en su agilidad y velocidad para atrapar a sus presas.';
                                 break;
                             case 'Cheetahs are solitary animals, although females tend to live with their cubs for up to two years. Males sometimes form small groups called coalitions.':
-                                element.textContent = 'Los guepardos son animales solitarios, aunque las hembras tienden a vivir con sus cachorros hasta dos años. Los machos a veces forman pequeños grupos llamados coaliciones.';
+                                element.textContent = 'Los Cheetahs son animales solitarios, aunque las hembras tienden a vivir con sus cachorros hasta dos años. Los machos a veces forman pequeños grupos llamados coaliciones.';
                                 break;
                             case 'Female cheetahs usually give birth to a litter of 3-5 cubs after a gestation period of about 3 months. Cubs are vulnerable to predators and rely on their mother\'s protection.':
-                                element.textContent = 'Las guepardas generalmente dan a luz a una camada de 3-5 cachorros después de un período de gestación de unos 3 meses. Los cachorros son vulnerables a los depredadores y dependen de la protección de su madre.';
+                                element.textContent = 'Las Cheetahs generalmente dan a luz a una camada de 3-5 cachorros después de un período de gestación de unos 3 meses. Los cachorros son vulnerables a los depredadores y dependen de la protección de su madre.';
                                 break;
                             case 'Cheetahs face threats from habitat loss, human-wildlife conflict, and illegal wildlife trade. Their population is declining, and they are classified as vulnerable.':
-                                element.textContent = 'Los guepardos enfrentan amenazas como la pérdida de hábitat, el conflicto entre humanos y vida silvestre, y el comercio ilegal de animales. Su población está disminuyendo y se les clasifica como vulnerables.';
+                                element.textContent = 'Los Cheetahs enfrentan amenazas como la pérdida de hábitat, el conflicto entre humanos y vida silvestre, y el comercio ilegal de animales. Su población está disminuyendo y se les clasifica como vulnerables.';
                                 break;
                             case 'Learn more about how to protect these incredible animals and ensure their survival for generations to come.':
                                 element.textContent = 'Aprenda más sobre cómo proteger a estos increíbles animales y asegurar su supervivencia para las generaciones futuras.';
@@ -109,6 +127,24 @@
                     }
                 }
             });
+        });
+
+        document.getElementById('submit-button').addEventListener('click', function() {
+            const userInput = document.getElementById('user-input').value;
+            const isSpanish = document.querySelector('h1').dataset.lang === 'es';
+            if (!userInput) {
+                Swal.fire({
+                    icon: 'error',
+                    title: isSpanish ? '¡Vaya!' : 'Oops...',
+                    text: isSpanish ? 'Por favor, ingrese su nombre. ¡Un Cheetah siempre está listo para correr!' : 'Please enter your name! A cheetah is always ready to run!',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: isSpanish ? `¡Hola, ${userInput}!` : `Hello, ${userInput}!`,
+                    text: isSpanish ? `${userInput}, estás listo para correr tan rápido como un Cheetah!` : `${userInput}, you are ready to run as fast as a cheetah!`,
+                });
+            }
         });
     </script>
 </body>
